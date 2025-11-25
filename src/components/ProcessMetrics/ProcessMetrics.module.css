@@ -1,0 +1,204 @@
+/* Normal CSS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.metricsContainer {
+  padding: 40px 20px;
+  background: #0f0f0f;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.splitLayout {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.censusSection, .processSection {
+  flex: 1;
+}
+
+.subTitle {
+  color: #f59e0b;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border-left: 4px solid #f59e0b;
+  padding-left: 15px;
+}
+
+.introText {
+  color: #d1d5db;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.statBox {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 8px;
+  border-bottom: 3px solid #f59e0b;
+  text-align: center;
+}
+
+.statNumber {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* Timeline CSS */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.stepContent h4 {
+  color: white;
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.stepContent p {
+  color: #9ca3af;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* 1024px Media Query */
+@media (max-width: 1024px) {
+  /* Center the main container text */
+  .metricsContainer {
+    text-align: center;
+  }
+
+  /* Stack the two main sections vertically */
+  .splitLayout {
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Ensure sections don't get too wide for readability */
+  .censusSection, 
+  .processSection {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Center the Subtitle and move border from left to bottom */
+  .subTitle {
+    font-size: 1.6rem;
+    text-align: center;
+    border-left: none;
+    padding-left: 0;
+    border-bottom: 3px solid #f59e0b;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+
+  /* Center the paragraph text */
+  .introText {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Center the Stats Grid */
+  .statGrid {
+    width: 100%;
+    /* Keep grid structure but ensure it fits the centered layout */
+  }
+
+  /* Center the Timeline Steps */
+  .timeline {
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Stack the Number Circle on top of the Text for perfect centering */
+  .step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Add spacing between the circle and the text */
+  .stepNumber {
+    margin-bottom: 15px;
+  }
+}
+
+/* 768px Media Query */
+@media (max-width: 768px) {
+  .statGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 425.6px Media Query */
+@media (max-width: 425.6px) {
+  .statGrid {
+    grid-template-columns: 1fr;
+  }
+  .statNumber {
+    font-size: 2rem;
+  }
+}
+
+/* 375.2px Media Query */
+@media (max-width: 375.2px) {
+  .subTitle {
+    font-size: 1.4rem;
+  }
+  .stepNumber {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+}

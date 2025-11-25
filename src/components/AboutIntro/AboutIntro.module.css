@@ -1,0 +1,111 @@
+/* Normal CSS */
+.introWrap {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.textSection {
+  flex: 1;
+}
+
+.subHeading {
+  color: #f59e0b;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.mainHeading {
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.accent {
+  color: #f59e0b;
+}
+
+.description {
+  color: #d1d5db;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.imageSection {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.buildingImg {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.imageSection:hover .buildingImg {
+  transform: scale(1.05);
+}
+
+/* 1024px Media Query */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .mainHeading {
+    font-size: 2.5rem;
+  }
+}
+
+/* 768px Media Query */
+@media (max-width: 768px) {
+  .buildingImg {
+    height: 300px;
+  }
+  
+  .mainHeading {
+    font-size: 2.2rem;
+  }
+}
+
+/* 425.6px Media Query */
+@media (max-width: 425.6px) {
+  .introWrap {
+    padding: 30px 20px;
+  }
+
+  .mainHeading {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+}
+
+/* 375.2px Media Query */
+@media (max-width: 375.2px) {
+  .buildingImg {
+    height: 250px;
+  }
+}

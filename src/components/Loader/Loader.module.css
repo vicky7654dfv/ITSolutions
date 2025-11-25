@@ -1,0 +1,226 @@
+/* =========================================
+   1. Normal CSS (Desktop / Base)
+   ========================================= */
+
+.loaderWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Dark IT Gradient Background */
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  
+  /* Fade Animation Logic */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+/* The Fade Out State */
+.loaderWrap.fadeOut {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  text-align: center;
+  position: relative;
+}
+
+/* Logo Box with tech glow */
+.logoBox {
+  position: relative;
+  padding: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  /* Tech Pulse Animation */
+  animation: pulseGlow 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.2));
+}
+
+.loaderBarContainer {
+  width: 320px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.loaderProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%; /* Starts at 0 */
+  /* Amber Gradient */
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 2px;
+  /* Loading Animation */
+  animation: loadFill 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.loadingText {
+  color: #e5e7eb;
+  font-size: 1rem;
+  font-family: 'Courier New', Courier, monospace; /* Tech/Code font */
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.blinkCursor {
+  color: #f59e0b;
+  font-weight: bold;
+  font-size: 1.1rem;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* --- Keyframes --- */
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.1));
+  }
+  100% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.4));
+  }
+}
+
+@keyframes loadFill {
+  0% { width: 0%; }
+  20% { width: 10%; }
+  40% { width: 45%; }
+  60% { width: 60%; }
+  100% { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* =========================================
+   2. 1024px Media Query
+   ========================================= */
+@media (max-width: 1024px) {
+  .logoBox {
+    padding: 15px;
+  }
+
+  .logo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .loaderBarContainer {
+    width: 280px;
+  }
+  
+  .loadingText {
+    font-size: 0.95rem;
+  }
+}
+
+/* =========================================
+   3. 768px Media Query
+   ========================================= */
+@media (max-width: 768px) {
+  .loaderContainer {
+    gap: 30px;
+  }
+  
+  .logo {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .loaderBarContainer {
+    width: 260px;
+    height: 3px;
+  }
+  
+  .loadingText {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================
+   4. 425.6px Media Query
+   ========================================= */
+@media (max-width: 425.6px) {
+  .loaderContainer {
+    gap: 25px;
+  }
+  
+  .logoBox {
+    padding: 12px;
+  }
+
+  .logo {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .loaderBarContainer {
+    width: 220px;
+  }
+  
+  .loadingText {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* =========================================
+   5. 375.2px Media Query
+   ========================================= */
+@media (max-width: 375.2px) {
+  .loaderContainer {
+    gap: 20px;
+  }
+  
+  .logo {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .loaderBarContainer {
+    width: 190px;
+  }
+  
+  .loadingText {
+    font-size: 0.75rem;
+  }
+}

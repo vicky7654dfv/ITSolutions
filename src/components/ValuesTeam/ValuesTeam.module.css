@@ -1,0 +1,340 @@
+/* =========================================
+   1. Normal CSS (Desktop / Base)
+   ========================================= */
+
+.vtWrap {
+  padding: 60px 40px;
+  background: #0f0f0f;
+  overflow: hidden;
+}
+
+.heading {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.accent {
+  color: #f59e0b;
+}
+
+.para {
+  color: #d1d5db;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+/* --- Values Section (Split Layout) --- */
+.valuesContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.valuesContent {
+  flex: 1;
+}
+
+.valuesGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.valueCard {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.valueCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #f59e0b;
+  transform: translateY(-5px);
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.iconBox i {
+  color: #f59e0b;
+  font-size: 1.2rem;
+}
+
+.valueCard h4 {
+  color: white;
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.valueCard p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Buttons --- */
+.primaryBtn {
+  margin-top: 10px;
+  padding: 14px 28px;
+  background: #f59e0b;
+  color: #000;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  background: #d97706;
+  transform: translateX(5px);
+}
+
+.secondaryBtn {
+  padding: 14px 40px;
+  background: transparent;
+  color: #f59e0b;
+  border: 2px solid #f59e0b;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondaryBtn:hover {
+  background: #f59e0b;
+  color: #000;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 80px 0;
+}
+
+/* --- Team Section --- */
+.teamContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teamHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.teamSub {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.devCard {
+  background: #151515;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.devCard:hover {
+  transform: translateY(-10px);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.imgWrapper {
+  width: 100%;
+  height: 320px; /* Slightly taller to accommodate portraits better */
+  overflow: hidden;
+}
+
+.imgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* FIX: Ensures focus is on the top center (faces) */
+  object-position: top center; 
+  transition: transform 0.5s ease;
+}
+
+.devCard:hover .imgWrapper img {
+  /* FIX: Very subtle zoom so faces don't get cut off */
+  transform: scale(1.02); 
+}
+
+.devInfo {
+  padding: 20px;
+  text-align: center;
+}
+
+.devInfo h4 {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0 0 5px 0;
+}
+
+.role {
+  color: #f59e0b;
+  font-size: 0.9rem;
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.socials button {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socials button:hover {
+  background: #f59e0b;
+  color: #000;
+}
+
+.teamAction {
+  text-align: center;
+}
+
+/* =========================================
+   2. 1024px Media Query
+   ========================================= */
+@media (max-width: 1024px) {
+  .vtWrap {
+    padding: 50px 30px;
+  }
+
+  .valuesContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .para {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr); /* Cards become wider here */
+    gap: 30px;
+  }
+
+  /* FIX: Increase height to 450px so the wider cards don't crop the faces */
+  .imgWrapper {
+    height: 450px; 
+  }
+}
+
+/* =========================================
+   3. 768px Media Query
+   ========================================= */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr; /* Stack values vertically on tablet */
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .imgWrapper {
+    height: 280px; /* Adjust height for tablet */
+  }
+}
+
+/* =========================================
+   4. 425.6px Media Query
+   ========================================= */
+@media (max-width: 425.6px) {
+  .vtWrap {
+    padding: 40px 20px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .primaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr; /* Stack team vertically */
+  }
+
+  .imgWrapper {
+    height: 350px; /* Tall photos on mobile for better portrait view */
+  }
+
+  .secondaryBtn {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   5. 375.2px Media Query
+   ========================================= */
+@media (max-width: 375.2px) {
+  .vtWrap {
+    padding: 30px 15px;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .imgWrapper {
+    height: 300px;
+  }
+}

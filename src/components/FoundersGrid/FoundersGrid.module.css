@@ -1,0 +1,232 @@
+/* =========================================
+   1. Normal CSS (Desktop / Base)
+   ========================================= */
+
+.foundersWrap {
+  padding: 40px 20px;
+  background: #151515;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h2 {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.accent {
+  color: #f59e0b;
+}
+
+.line {
+  width: 60px;
+  height: 3px;
+  background: #f59e0b;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  height: 420px; /* Increased slightly for better proportions */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #000;
+  cursor: pointer;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* FIX: Focus on faces (Top Center) so zoom doesn't cut heads off */
+  object-position: top center; 
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.infoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px;
+  /* Darker gradient for better text readability */
+  background: linear-gradient(to top, rgba(15, 15, 15, 1) 0%, rgba(15, 15, 15, 0.9) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  /* FIX: Slide down so only Name & Role (~90px) are visible initially */
+  transform: translateY(calc(100% - 88px)); 
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover State */
+.card:hover .infoOverlay {
+  transform: translateY(0); /* Reveal Bio & Button */
+  background: linear-gradient(to top, rgba(15, 15, 15, 1) 0%, rgba(15, 15, 15, 0.95) 80%, rgba(15, 15, 15, 0.4) 100%);
+}
+
+.card:hover .photo {
+  /* FIX: Subtler zoom to prevent distortion */
+  transform: scale(1.05); 
+}
+
+.infoOverlay h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.role {
+  color: #f59e0b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 5px; /* Spacing before bio starts */
+}
+
+.bio {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  /* Ensure bio fades in nicely */
+  opacity: 0; 
+  transition: opacity 0.3s ease 0.1s; /* Delay slightly */
+}
+
+.card:hover .bio {
+  opacity: 1;
+}
+
+.profileBtn {
+  margin-top: 15px;
+  background: transparent;
+  border: 1px solid #f59e0b;
+  color: #f59e0b;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.card:hover .profileBtn {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s; /* Animate in after bio */
+}
+
+.profileBtn:hover {
+  background: #f59e0b;
+  color: #1a1a1a;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+/* =========================================
+   2. 1024px Media Query (Tablet Landscape)
+   ========================================= */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* Keep 3 up if space permits, or switch to 2 */
+    gap: 20px;
+  }
+  
+  .card {
+    height: 380px;
+  }
+  
+  /* Adjust calculation for tablet font sizes */
+  .infoOverlay {
+    transform: translateY(calc(100% - 85px));
+  }
+}
+
+/* =========================================
+   3. 768px Media Query (Tablet Portrait)
+   ========================================= */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr; /* Stack vertically */
+    max-width: 450px; /* Limit width for aesthetics */
+  }
+  
+  .card {
+    height: 450px;
+  }
+
+  /* On mobile, we can't rely on hover. 
+     Option A: Always show full info.
+     Option B: Keep hover logic (tap to expand). 
+     Here we choose Option A for better UX. */
+     
+  .infoOverlay {
+    transform: translateY(0); /* Always visible */
+    background: linear-gradient(to top, rgba(15, 15, 15, 1) 0%, rgba(15, 15, 15, 0.8) 100%);
+  }
+  
+  .bio, .profileBtn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   4. 425.6px Media Query (Mobile Large)
+   ========================================= */
+@media (max-width: 425.6px) {
+  .card {
+    height: 600px;
+  }
+  
+  .header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .infoOverlay h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* =========================================
+   5. 375.2px Media Query (Mobile Small)
+   ========================================= */
+@media (max-width: 375.2px) {
+  .foundersWrap {
+    padding: 30px 15px;
+  }
+  
+  .card {
+    height: 600px;
+  }
+  
+  .infoOverlay {
+    padding: 20px;
+  }
+  
+  .profileBtn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}

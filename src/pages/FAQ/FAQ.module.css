@@ -1,0 +1,248 @@
+/* =========================================
+   1. Normal CSS (Desktop / Base)
+   ========================================= */
+
+.faqWrap {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.subTitle {
+  color: #f59e0b;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.mainTitle {
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.accent {
+  color: #f59e0b;
+}
+
+.description {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Category Section */
+.categorySection {
+  margin-bottom: 50px;
+}
+
+.catTitle {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-block;
+}
+
+/* Accordion Styles */
+.accordionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.accordionItem {
+  background: rgba(255, 255, 255, 0.03); 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordionItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.activeItem {
+  background: rgba(245, 158, 11, 0.05);
+  border-color: #f59e0b;
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.questionText {
+  color: #e5e7eb;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.activeItem .questionText {
+  color: #f59e0b;
+}
+
+.icon {
+  color: #f59e0b;
+  font-size: 1rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+/* Animation for the body */
+.accordionBody {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+.answerContent {
+  padding: 0 25px 25px 25px;
+}
+
+.answerContent p {
+  color: #9ca3af;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   2. 1024px Media Query
+   ========================================= */
+@media (max-width: 1024px) {
+  .faqWrap {
+    padding: 50px 30px;
+  }
+
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .catTitle {
+    font-size: 1.3rem;
+  }
+}
+
+/* =========================================
+   3. 768px Media Query
+   ========================================= */
+@media (max-width: 768px) {
+  .faqWrap {
+    padding: 40px 20px;
+  }
+
+  .mainTitle {
+    font-size: 2rem;
+  }
+
+  .questionText {
+    font-size: 1rem;
+  }
+
+  .accordionHeader {
+    padding: 18px 20px;
+  }
+
+  .answerContent {
+    padding: 0 20px 20px 20px;
+  }
+}
+
+/* =========================================
+   4. 425.6px Media Query
+   ========================================= */
+@media (max-width: 425.6px) {
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .subTitle {
+    font-size: 0.8rem;
+  }
+
+  .mainTitle {
+    font-size: 1.8rem;
+  }
+
+  .questionText {
+    font-size: 0.95rem;
+  }
+
+  .catTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .accordionHeader {
+    padding: 15px;
+  }
+
+  .answerContent {
+    padding: 0 15px 15px 15px;
+  }
+}
+
+/* =========================================
+   5. 375.2px Media Query
+   ========================================= */
+@media (max-width: 375.2px) {
+  .faqWrap {
+    padding: 30px 15px;
+  }
+
+  .mainTitle {
+    font-size: 1.6rem;
+  }
+
+  .questionText {
+    font-size: 0.9rem;
+  }
+  
+  .icon {
+    font-size: 0.9rem;
+  }
+  
+  .answerContent p {
+    font-size: 0.9rem;
+  }
+}

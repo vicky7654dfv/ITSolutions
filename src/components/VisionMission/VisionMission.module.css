@@ -1,0 +1,109 @@
+/* Normal CSS */
+.vmWrap {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 15px;
+  padding: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.iconBox {
+  width: 70px;
+  height: 70px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f59e0b;
+}
+
+.iconBox i {
+  font-size: 1.8rem;
+  color: #f59e0b;
+}
+
+.content h3 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.content p {
+  color: #d1d5db;
+  line-height: 1.6;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.divider {
+  width: 1px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 40px;
+}
+
+/* 1024px Media Query */
+@media (max-width: 1024px) {
+  .container {
+    padding: 30px;
+  }
+  .content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 768px Media Query */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .divider {
+    width: 80%;
+    height: 1px;
+    margin: 10px 0;
+  }
+}
+
+/* 425.6px Media Query */
+@media (max-width: 425.6px) {
+  .vmWrap {
+    padding: 30px 15px;
+  }
+  
+  .iconBox {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .content p {
+    font-size: 0.95rem;
+  }
+}
+
+/* 375.2px Media Query */
+@media (max-width: 375.2px) {
+  .content h3 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,419 @@
+/* =========================================
+   1. Normal CSS (Desktop / Base)
+   ========================================= */
+
+/* Fade Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footerWrap {
+  /* Dark IT Theme: Deep Black to Charcoal Gradient */
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  padding: 60px 40px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr 1.5fr;
+  gap: 40px;
+  color: #e5e7eb;
+  position: relative;
+  overflow: hidden;
+  
+  /* Animation: Only the outer container fades in */
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* Top Accent Line (Amber) */
+.footerWrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #f59e0b;
+  box-shadow: 0 2px 15px rgba(245, 158, 11, 0.4);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Brand Section */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+
+/* NEW: Styles for the imported Image Logo */
+.logoImg {
+  height: 50px; /* Adjust this value based on your logo's aspect ratio */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.box p {
+  color: #9ca3af;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Headings */
+.box h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Animated Underline for Headings */
+.box h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #f59e0b;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.box:hover h4::after {
+  width: 100%;
+}
+
+/* Links List */
+.box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.box ul li {
+  margin: 0;
+}
+
+.box ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  left: 0;
+}
+
+/* Link Hover Effect: Slide Right + Glow */
+.box ul li a:hover {
+  color: #fbbf24;
+  left: 6px;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+}
+
+/* Contact Info */
+.contactInfo li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.contactInfo li i {
+  color: #f59e0b;
+  width: 18px;
+  margin-top: 3px;
+}
+
+/* CTA Button */
+.aboutBtn {
+  background: transparent;
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Button Fill Animation */
+.aboutBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #f59e0b;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.aboutBtn:hover::before {
+  width: 100%;
+}
+
+.aboutBtn:hover {
+  color: #1a1a1a;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Social Media */
+.media {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.socialLink i {
+  color: #d1d5db;
+  font-size: 1rem;
+  transition: all 0.4s ease;
+}
+
+.socialLink:hover {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  transform: rotate(360deg);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+}
+
+.socialLink:hover i {
+  color: #0f0f0f;
+}
+
+/* Bottom Copyright Section */
+.bottomFooter {
+  background: #0a0a0a;
+  padding: 25px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bottomFooter hr {
+  display: none;
+}
+
+.bottomFooter p {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =========================================
+   2. 1024px Media Query (Tablet Landscape)
+   ========================================= */
+@media (max-width: 1024px) {
+  .footerWrap {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
+    padding: 50px 35px 35px;
+  }
+
+  .box:first-child {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .logoContainer {
+    justify-content: center;
+  }
+
+  .box p {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  
+  .aboutBtn {
+    align-self: center;
+  }
+
+  .box:nth-child(2),
+  .box:nth-child(3),
+  .box:nth-child(4),
+  .box:nth-child(5) {
+    grid-column: span 1;
+    min-width: 0;
+  }
+}
+
+/* =========================================
+   3. 768px Media Query (Tablet Portrait)
+   ========================================= */
+@media (max-width: 768px) {
+  .footerWrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px 30px 30px;
+  }
+
+  .box:first-child {
+    grid-column: 1 / -1;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .logoContainer {
+    justify-content: flex-start;
+  }
+  
+  .aboutBtn {
+    align-self: flex-start;
+  }
+
+  .box p {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .box:nth-child(4),
+  .box:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .media {
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================
+   4. 425.6px Media Query (Large Mobile)
+   ========================================= */
+@media (max-width: 425.6px) {
+  .footerWrap {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 35px 20px 25px;
+  }
+
+  .box:first-child {
+    grid-column: 1;
+    text-align: center;
+    align-items: center;
+  }
+
+  .logoContainer {
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Adjusted image size for mobile if necessary */
+  .logoImg {
+    height: 45px;
+  }
+
+  .aboutBtn {
+    align-self: center;
+  }
+
+  .box h4 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+
+  .box:last-child {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .media {
+    justify-content: center;
+  }
+
+  .socialLink {
+    width: 38px;
+    height: 38px;
+  }
+
+  .socialLink i {
+    font-size: 0.9rem;
+  }
+
+  .bottomFooter {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   5. 375.2px Media Query (Small Mobile)
+   ========================================= */
+@media (max-width: 375.2px) {
+  .footerWrap {
+    padding: 30px 15px 20px;
+    gap: 25px;
+  }
+
+  .logoImg {
+    height: 40px;
+  }
+
+  .box p {
+    font-size: 0.9rem;
+  }
+
+  .aboutBtn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .socialLink {
+    width: 36px;
+    height: 36px;
+  }
+
+  .bottomFooter {
+    padding: 15px;
+  }
+  
+  .bottomFooter p {
+    font-size: 0.8rem;
+  }
+}
