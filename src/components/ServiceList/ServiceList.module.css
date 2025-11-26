@@ -1,0 +1,181 @@
+/* Container */
+.serviceContainer {
+  width: 100%;
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #fff;
+  border-bottom: 3px solid #f59e0b; /* As requested in global style */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.subHeader {
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+/* Grid Layout */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Card Styles */
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); /* Blue glow on hover */
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Counter Styles */
+.counterWrapper {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #f59e0b; /* Amber Accent */
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.plus {
+  margin-right: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.counterLabel {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* Card Content */
+.card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.desc {
+  font-size: 1rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1; /* Pushes button to bottom */
+}
+
+.actionBtn {
+  padding: 10px 24px;
+  background: transparent;
+  border: 1px solid #f59e0b;
+  color: #f59e0b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.actionBtn:hover {
+  background: #f59e0b;
+  color: #0f0f0f;
+}
+
+/* --- Media Queries --- */
+
+/* 1024px */
+@media screen and (max-width: 1024px) {
+  .serviceContainer {
+    padding: 60px 5%;
+  }
+  
+  .card h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* 768px - Switch to 1 column or keep 2 tighter? Usually 1 is safer for cards with content */
+@media screen and (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr; /* Stack vertically */
+    gap: 1.5rem;
+  }
+
+  .header h2 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    padding: 2rem;
+    align-items: center; /* Center align content for mobile look */
+    text-align: center;
+  }
+
+  .actionBtn {
+    align-self: center;
+  }
+}
+
+/* 425.6px */
+@media screen and (max-width: 425.6px) {
+  .header h2 {
+    font-size: 1.8rem;
+  }
+
+  .counterWrapper {
+    font-size: 2rem;
+  }
+  
+  .card h1 {
+    font-size: 1.4rem;
+  }
+  
+  .desc {
+    font-size: 0.95rem;
+  }
+}
+
+/* 375.2px */
+@media screen and (max-width: 375.2px) {
+  .serviceContainer {
+    padding: 40px 1rem; /* Tight padding */
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .header h2 {
+    font-size: 1.6rem;
+  }
+}

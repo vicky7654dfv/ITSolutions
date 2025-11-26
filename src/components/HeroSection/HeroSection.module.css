@@ -1,0 +1,157 @@
+/* Normal / Desktop First Styles */
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 90vh; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligns content to left */
+  overflow: hidden;
+  /* Using the requested gradient as a base overlay or fallback */
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #fff;
+}
+
+.videoBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.7); /* Darkens video for text readability */
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  margin-left: 8%; /* Slightly away from center/left edge */
+  max-width: 600px;
+}
+
+.content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #fff, #a5a5a5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.content p {
+  font-size: 1.1rem;
+  color: #d1d5db;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.primaryBtn, .secondaryBtn {
+  padding: 12px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.primaryBtn {
+  background: #f59e0b; /* Amber accent from your border color */
+  border: 2px solid #f59e0b;
+  color: #0f0f0f;
+}
+
+.primaryBtn:hover {
+  background: transparent;
+  color: #f59e0b;
+}
+
+.secondaryBtn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.secondaryBtn:hover {
+  background: #fff;
+  color: #0f0f0f;
+}
+
+/* --- Media Queries --- */
+
+/* 1024px */
+@media screen and (max-width: 1024px) {
+  .content h1 {
+    font-size: 3rem;
+  }
+}
+
+/* 768px */
+@media screen and (max-width: 768px) {
+  .heroContainer {
+    justify-content: center; /* Center align on tablet/mobile usually looks better */
+    text-align: center;
+  }
+  
+  .content {
+    margin-left: 0;
+    padding: 0 20px;
+  }
+
+  .btnGroup {
+    justify-content: center;
+  }
+
+  .content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* 425.6px */
+@media screen and (max-width: 425.6px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+  
+  .content p {
+    font-size: 1rem;
+  }
+
+  .primaryBtn, .secondaryBtn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 375.2px */
+@media screen and (max-width: 375.2px) {
+  .content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .btnGroup {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .primaryBtn, .secondaryBtn {
+    width: 100%;
+  }
+}

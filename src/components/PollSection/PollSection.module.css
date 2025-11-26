@@ -1,0 +1,162 @@
+/* Container */
+.pollContainer {
+  width: 100%;
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #fff;
+  border-bottom: 3px solid #f59e0b;
+  position: relative;
+  /* Sticky/Top/Z-index were requested in your prompt, though usually used for headers. 
+     I've included them to match your request exactly, but be careful if this isn't the top element. */
+  position: sticky; 
+  /* top: 0;  <-- CAUTION: This will make the poll section stick to the top of the screen when scrolling. 
+     If you only wanted the style (colors) and not the behavior, remove 'position: sticky' and 'top: 0'. */
+  z-index: 1000; 
+  box-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);
+}
+
+.header {
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.header h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+/* Grid */
+.pollGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+/* Card */
+.pollCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+}
+
+.pollCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #f3f4f6;
+}
+
+.voteCount {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* Progress Bars */
+.resultRow {
+  margin-bottom: 1.2rem;
+}
+
+.labelGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+.percentage {
+  color: #f59e0b; /* Amber accent */
+  font-weight: 700;
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: #3b82f6; /* Blue fill */
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
+
+/* Status Badge */
+.statusTag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(16, 185, 129, 0.2); /* Green tint */
+  color: #34d399;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* --- Media Queries --- */
+
+/* 1024px */
+@media screen and (max-width: 1024px) {
+  .pollContainer {
+    padding: 60px 5%;
+  }
+  .pollGrid {
+    gap: 2rem;
+  }
+}
+
+/* 768px */
+@media screen and (max-width: 768px) {
+  .pollGrid {
+    grid-template-columns: 1fr; /* Stack cards */
+  }
+  
+  .header h2 {
+    font-size: 2rem;
+  }
+}
+
+/* 425.6px */
+@media screen and (max-width: 425.6px) {
+  .header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .pollCard h3 {
+    font-size: 1.1rem;
+  }
+  
+  .labelGroup {
+    font-size: 0.85rem;
+  }
+}
+
+/* 375.2px */
+@media screen and (max-width: 375.2px) {
+  .pollContainer {
+    padding: 40px 1rem;
+  }
+  
+  .pollCard {
+    padding: 1.5rem;
+  }
+  
+  .statusTag {
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,179 @@
+/* Container Styles */
+.aboutContainer {
+  width: 100%;
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  color: #fff;
+  border-bottom: 1px solid #333;
+  overflow: hidden; /* Prevents scrollbars if animations go slightly out */
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left Side: Text */
+.textColumn {
+  flex: 1;
+}
+
+.textColumn h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #f59e0b;
+}
+
+.textColumn p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+/* Right Side: Images (Desktop Default) */
+.imageColumn {
+  flex: 1;
+  position: relative;
+  height: 400px; /* Fixed height only for desktop to allow absolute positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgBox {
+  position: absolute; /* Default to absolute for the overlapping desktop look */
+  width: 250px;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.imgBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Desktop Positioning */
+.imgBox:nth-child(1) {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.imgBox:nth-child(2) {
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  border-color: #f59e0b;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.floatFast {
+  animation: float 4s ease-in-out infinite;
+}
+
+.floatSlow {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- Media Queries --- */
+
+/* 1024px: Just scaling down slightly, keeping layout */
+@media screen and (max-width: 1024px) {
+  .aboutContainer {
+    padding: 60px 5%;
+  }
+  .imgBox {
+    width: 200px;
+    height: 150px;
+  }
+  .imageColumn {
+    height: 350px;
+  }
+}
+
+/* 768px: Switch to Vertical Stack to fix overflow */
+@media screen and (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .textColumn {
+    margin-bottom: 0.3rem; /* Add space between text and images */
+  }
+
+  /* RESET Layout for Images */
+  .imageColumn {
+    width: 100%;
+    height: auto; /* Allow container to grow with content */
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center;
+    gap: 2rem; /* Space between images */
+    margin-top: 0;
+  }
+
+  .imgBox {
+    position: relative; /* Stop floating outside the box */
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    width: 80%; /* Make images responsive width */
+    max-width: 400px; /* But don't get too huge */
+    height: 250px;
+  }
+  
+  /* Reset specific positioning adjustments */
+  .imgBox:nth-child(1),
+  .imgBox:nth-child(2) {
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    transform: none; /* Reset transform so animation starts from 0 */
+  }
+  
+  /* Re-apply animation but ensure it doesn't move too much */
+  
+}
+
+/* 425.6px */
+@media screen and (max-width: 425.6px) {
+  .textColumn h2 {
+    font-size: 1.8rem;
+  }
+  
+  .imgBox {
+    width: 90%;
+    height: 200px; /* Slightly smaller height */
+  }
+}
+
+/* 375.2px */
+@media screen and (max-width: 375.2px) {
+  .textColumn h2 {
+    font-size: 1.6rem;
+  }
+  
+  .imgBox {
+    width: 100%;
+    height: 180px;
+  }
+}
