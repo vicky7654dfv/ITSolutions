@@ -4,6 +4,9 @@ import CountUp from 'react-countup';
 import Style from './Dashboard.module.css';
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import img1 from "../../assets/Dashboard/1.webp"
+import img2 from "../../assets/Dashboard/2.webp"
+import img3 from "../../assets/Dashboard/3.webp"
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');
@@ -398,7 +401,7 @@ const Dashboard = () => {
       <div className={Style.imageStrip}>
         <div className={Style.imageCard}>
           <img 
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" 
+            src={img1} 
             alt="Team collaboration" 
             loading="lazy"
           />
@@ -408,7 +411,7 @@ const Dashboard = () => {
         </div>
         <div className={Style.imageCard}>
           <img 
-            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" 
+            src={img2} 
             alt="Code planning" 
             loading="lazy"
           />
@@ -418,7 +421,7 @@ const Dashboard = () => {
         </div>
         <div className={Style.imageCard}>
           <img 
-            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80" 
+            src={img3} 
             alt="System architecture" 
             loading="lazy"
           />

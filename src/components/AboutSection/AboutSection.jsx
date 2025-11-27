@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import styles from './AboutSection.module.css';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import img1 from "../../assets/HomePage2/AboutSection/1.webp"
+import img2 from "../../assets/HomePage2/AboutSection/2.webp"
 
 const AboutSection = () => {
   useEffect(() => {
@@ -32,7 +34,7 @@ const AboutSection = () => {
           {/* Image 1: Top floating */}
           <div className={`${styles.imgBox} ${styles.floatFast}`}>
             <img 
-              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" 
+              src={img1} 
               alt="Cybersecurity lock" 
             />
           </div>
@@ -40,7 +42,7 @@ const AboutSection = () => {
           {/* Image 2: Bottom floating (offset) */}
           <div className={`${styles.imgBox} ${styles.floatSlow}`}>
             <img 
-              src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" 
+              src={img2} 
               alt="Global network" 
             />
           </div>

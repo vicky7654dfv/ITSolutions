@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import styles from './HorizontalComponent.module.css';
 import { useNavigate } from 'react-router-dom';
+import img1 from "../../assets/HorizontalComponent/1.webp"
+import img2 from "../../assets/HorizontalComponent/2.webp"
+import img3 from "../../assets/HorizontalComponent/3.webp"
+import img4 from "../../assets/HorizontalComponent/4.webp"
+import img5 from "../../assets/HorizontalComponent/5.webp"
+import img6 from "../../assets/HorizontalComponent/6.webp"
+import img7 from "../../assets/HorizontalComponent/7.webp"
+import img8 from "../../assets/HorizontalComponent/8.webp"
 
 const HorizontalComponent = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -9,46 +17,45 @@ const HorizontalComponent = () => {
     {
       id: 1,
       title: "Cloud Solutions",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
+      image: img1
     },
     {
       id: 2,
       title: "AI & Machine Learning",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      image: img2
     },
     {
       id: 3,
       title: "Cybersecurity",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      image: img3
     },
     {
       id: 4,
       title: "Web Development",
-      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80"
+      image: img4
     },
     {
       id: 5,
       title: "Mobile Apps",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      image: img5
     },
     {
       id: 6,
       title: "Data Analytics",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+      image: img6
     },
     {
       id: 7,
       title: "IoT Solutions",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80"
+      image: img7
     },
     {
       id: 8,
       title: "Blockchain",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80"
+      image: img8
     }
   ];
 
-  // Duplicate the array to create seamless loop
   const duplicatedServices = [...servicesData, ...servicesData];
 
   const navigate = useNavigate();

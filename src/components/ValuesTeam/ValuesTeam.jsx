@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ValuesTeam.module.css";
+import img1 from "../../assets/About/ValuesTeam/1.webp"
+import img2 from "../../assets/About/ValuesTeam/2.webp"
+import img3 from "../../assets/About/ValuesTeam/3.webp"
+import img4 from "../../assets/About/ValuesTeam/4.webp"
 
 export default function ValuesTeam() {
   const navigate = useNavigate();
@@ -20,22 +24,22 @@ export default function ValuesTeam() {
     { 
       name: "David Kim", 
       role: "Senior Backend Architect", 
-      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1887&auto=format&fit=crop" 
+      img: img1 
     },
     { 
       name: "Elena Rodriguez", 
       role: "Lead UI/UX Designer", 
-      img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" 
+      img: img2 
     },
     { 
       name: "Michael Chang", 
       role: "DevOps Lead", 
-      img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?q=80&w=1887&auto=format&fit=crop" 
+      img: img3 
     },
     { 
       name: "Priya Patel", 
       role: "Mobile Solutions Head", 
-      img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1887&auto=format&fit=crop" 
+      img: img4 
     },
   ];
 

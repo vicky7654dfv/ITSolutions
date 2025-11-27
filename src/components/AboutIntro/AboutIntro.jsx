@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AboutIntro.module.css";
-
+import img from "../../assets/About/About intro/img.webp"
 export default function AboutIntro() {
   return (
     <div className={styles.introWrap} data-aos="fade">
@@ -20,7 +20,7 @@ export default function AboutIntro() {
         </div>
         <div className={styles.imageSection}>
           <img 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+            src={img} 
             alt="TheStackly Headquarters" 
             className={styles.buildingImg} 
           />

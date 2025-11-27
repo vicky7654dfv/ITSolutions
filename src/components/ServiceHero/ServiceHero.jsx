@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ServiceHero.module.css";
+import img1 from "../../assets/Services/1.webp"
+import img2 from "../../assets/Services/2.webp"
+import img3 from "../../assets/Services/3.webp"
+import img4 from "../../assets/Services/4.webp"
 
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop",
+    image: img1,
     title: "Enterprise Software Development",
     desc: "Scalable, secure, and high-performance software tailored to your business needs."
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+    image: img2,
     title: "Cybersecurity & Risk Management",
     desc: "Protecting your digital assets with next-gen security protocols and real-time monitoring."
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2064&auto=format&fit=crop",
+    image: img3,
     title: "Cloud Infrastructure Solutions",
     desc: "Seamless migration and management of cloud architectures for ultimate flexibility."
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    image: img4,
     title: "AI & Data Analytics",
     desc: "Transforming raw data into actionable insights using machine learning algorithms."
   }
