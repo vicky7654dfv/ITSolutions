@@ -1,10 +1,29 @@
-/* Container */
+/* Container - Keep original styles but add 3D enhancement */
 .serviceContainer {
   width: 100%;
   padding: 80px 8%;
   background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
   color: #fff;
-  border-bottom: 3px solid #f59e0b; /* As requested in global style */
+  border-bottom: 3px solid #f59e0b;
+  perspective: 1200px; /* Increased for more dramatic 3D */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Add a subtle grid background */
+.serviceContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .header {
@@ -13,6 +32,8 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .header h2 {
@@ -29,29 +50,172 @@
 /* Grid Layout */
 .gridContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns by default */
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
-/* Card Styles */
+/* MODERN CARD REDESIGN */
 .card {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Updated border with gradient */
+  border: 1px solid transparent;
+  border-radius: 20px;
   padding: 2.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
   overflow: hidden;
+  
+  /* 3D Transform Origin */
+  transform-style: preserve-3d;
+  transform: translateZ(0) rotateX(0) rotateY(0);
+  
+  /* Enhanced Shadow with multiple layers */
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
+  /* Border Gradient (Visible on unhover) */
+  background-clip: padding-box;
+  border: double 1px transparent;
+  background-image: 
+    linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.8)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  
+  /* Universal Live Animation */
+  animation: float3D 8s ease-in-out infinite, 
+             pulseGlow 4s ease-in-out infinite;
+  
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Staggered animations */
+.card:nth-child(1) { 
+  animation-delay: 0s, 0s; 
+}
+.card:nth-child(2) { 
+  animation-delay: 1.6s, 1s; 
+}
+.card:nth-child(3) { 
+  animation-delay: 3.2s, 2s; 
+}
+.card:nth-child(4) { 
+  animation-delay: 4.8s, 3s; 
+}
+
+/* Animated Corner Accents (Always visible) */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-top: 2px solid rgba(245, 158, 11, 0.3);
+  border-right: 2px solid rgba(245, 158, 11, 0.3);
+  border-top-right-radius: 18px;
+  transition: all 0.5s ease;
+  animation: cornerPulse 6s ease-in-out infinite;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-bottom: 2px solid rgba(245, 158, 11, 0.2);
+  border-left: 2px solid rgba(245, 158, 11, 0.2);
+  border-bottom-left-radius: 18px;
+  transition: all 0.5s ease;
+  animation: cornerPulse 6s ease-in-out infinite reverse;
+}
+
+/* Floating Particles Effect (Unhover State) */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 50%;
+  animation: floatParticle 15s linear infinite;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+.particle:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation-delay: 3s;
+}
+.particle:nth-child(3) {
+  top: 80%;
+  left: 40%;
+  animation-delay: 6s;
+}
+
+/* HOVER EFFECTS */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15); /* Blue glow on hover */
-  border-color: rgba(59, 130, 246, 0.4);
+  /* Enhanced 3D Lift */
+  transform: translateY(-12px) translateZ(20px) rotateX(2deg) rotateY(-2deg);
+  animation-play-state: paused;
+  
+  /* Glowing Border Gradient */
+  background-image: 
+    linear-gradient(rgba(17, 17, 17, 0.9), rgba(17, 17, 17, 0.9)),
+    linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(245, 158, 11, 0.1));
+  
+  /* Enhanced Shadow with glow */
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(245, 158, 11, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Slight brightness increase */
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced Corner Accents on Hover */
+.card:hover::after {
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid rgba(245, 158, 11, 0.8);
+  border-right: 2px solid rgba(245, 158, 11, 0.8);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+  animation: none;
+}
+
+.card:hover::before {
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid rgba(245, 158, 11, 0.6);
+  border-left: 2px solid rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+  animation: none;
 }
 
 /* Counter Styles */
@@ -62,20 +226,27 @@
   display: flex;
   align-items: center;
   line-height: 1;
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.3); /* Glowing Text */
+  position: relative;
+  z-index: 2;
 }
 
 .plus {
   margin-right: 5px;
   font-size: 1.5rem;
   color: #fff;
+  opacity: 0.8;
 }
 
 .counterLabel {
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #6b7280;
+  letter-spacing: 2px;
+  color: #9ca3af;
   margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
 }
 
 /* Card Content */
@@ -83,32 +254,134 @@
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #fff;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 8px;
+  z-index: 2;
+}
+
+/* Animated Underline for Title on Hover */
+.card h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #f59e0b, transparent);
+  transition: width 0.5s ease;
+}
+
+.card:hover h1::after {
+  width: 100%;
 }
 
 .desc {
   font-size: 1rem;
   color: #d1d5db;
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 2rem;
   flex-grow: 1; /* Pushes button to bottom */
+  position: relative;
+  z-index: 2;
 }
 
 .actionBtn {
-  padding: 10px 24px;
-  background: transparent;
+  padding: 12px 28px;
+  background: rgba(245, 158, 11, 0.1); /* Subtle background */
   border: 1px solid #f59e0b;
   color: #f59e0b;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: all 0.3s ease;
   align-self: flex-start;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.actionBtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #f59e0b;
+  transition: all 0.3s;
+  z-index: -1;
 }
 
 .actionBtn:hover {
-  background: #f59e0b;
   color: #0f0f0f;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+
+.actionBtn:hover::after {
+  height: 100%; /* Fill up effect */
+}
+
+/* Enhanced Button Hover Effect */
+.card:hover .actionBtn {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* KEYFRAMES */
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0) translateZ(0) rotateX(0) rotateY(0);
+  }
+  33% {
+    transform: translateY(-6px) translateZ(5px) rotateX(0.5deg) rotateY(0.5deg);
+  }
+  66% {
+    transform: translateY(-3px) translateZ(3px) rotateX(-0.5deg) rotateY(-0.5deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.15),
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      0 0 20px rgba(245, 158, 11, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
+@keyframes cornerPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
 }
 
 /* --- Media Queries --- */
@@ -124,7 +397,7 @@
   }
 }
 
-/* 768px - Switch to 1 column or keep 2 tighter? Usually 1 is safer for cards with content */
+/* 768px */
 @media screen and (max-width: 768px) {
   .gridContainer {
     grid-template-columns: 1fr; /* Stack vertically */
@@ -139,10 +412,36 @@
     padding: 2rem;
     align-items: center; /* Center align content for mobile look */
     text-align: center;
+    animation: float3D 6s ease-in-out infinite;
+  }
+
+  @keyframes float3D {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+  
+  /* Remove particles on mobile for performance */
+  .particle {
+    display: none;
+  }
+  
+  .card::after,
+  .card::before {
+    width: 20px;
+    height: 20px;
   }
 
   .actionBtn {
     align-self: center;
+  }
+  
+  /* Mobile hover adjustments */
+  .card:hover {
+    transform: translateY(-8px);
   }
 }
 
@@ -162,6 +461,10 @@
   
   .desc {
     font-size: 0.95rem;
+  }
+  
+  .card {
+    padding: 1.8rem;
   }
 }
 

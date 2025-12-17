@@ -1,10 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ValuesTeam.module.css";
-import img1 from "../../assets/About/ValuesTeam/1.webp"
-import img2 from "../../assets/About/ValuesTeam/2.webp"
-import img3 from "../../assets/About/ValuesTeam/3.webp"
-import img4 from "../../assets/About/ValuesTeam/4.webp"
+
+// Team Images
+import img1 from "../../assets/About/ValuesTeam/1.webp";
+import img2 from "../../assets/About/ValuesTeam/2.webp";
+import img3 from "../../assets/About/ValuesTeam/3.webp";
+import img4 from "../../assets/About/ValuesTeam/4.webp";
+
+// Values Images
+import innovationImg from "../../assets/About/Philosophy/1.webp";
+import integrityImg from "../../assets/About/Philosophy/2.webp";
+import agileImg from "../../assets/About/Philosophy/3.webp";
+import securityImg from "../../assets/About/Philosophy/4.webp";
 
 export default function ValuesTeam() {
   const navigate = useNavigate();
@@ -14,42 +22,51 @@ export default function ValuesTeam() {
   };
 
   const values = [
-    { title: "Innovation First", desc: "We don't just follow trends; we set them.", icon: "fa-solid fa-lightbulb" },
-    { title: "Radical Integrity", desc: "Transparency in every line of code we write.", icon: "fa-solid fa-scale-balanced" },
-    { title: "Agile Adaptation", desc: "Speed and flexibility are our core currencies.", icon: "fa-solid fa-bolt" },
-    { title: "Ironclad Security", desc: "Protecting data with military-grade protocols.", icon: "fa-solid fa-shield-halved" },
+    { 
+      title: "Innovation First", 
+      desc: "We don't just follow trends; we set them.", 
+      image: innovationImg 
+    },
+    { 
+      title: "Radical Integrity", 
+      desc: "Transparency in every line of code we write.", 
+      image: integrityImg 
+    },
+    { 
+      title: "Agile Adaptation", 
+      desc: "Speed and flexibility are our core currencies.", 
+      image: agileImg 
+    },
+    { 
+      title: "Ironclad Security", 
+      desc: "Protecting data with military-grade protocols.", 
+      image: securityImg 
+    },
   ];
 
   const team = [
-    { 
-      name: "David Kim", 
-      role: "Senior Backend Architect", 
-      img: img1 
-    },
-    { 
-      name: "Elena Rodriguez", 
-      role: "Lead UI/UX Designer", 
-      img: img2 
-    },
-    { 
-      name: "Michael Chang", 
-      role: "DevOps Lead", 
-      img: img3 
-    },
-    { 
-      name: "Priya Patel", 
-      role: "Mobile Solutions Head", 
-      img: img4 
-    },
+    { name: "David Kim", role: "Senior Backend Architect", img: img1 },
+    { name: "Elena Rodriguez", role: "Lead UI/UX Designer", img: img2 },
+    { name: "Michael Chang", role: "DevOps Lead", img: img3 },
+    { name: "Priya Patel", role: "Mobile Solutions Head", img: img4 },
   ];
 
   return (
     <div className={styles.vtWrap} data-aos="fade">
       
-      {/* --- Values Section --- */}
+      {/* Background Connecting Dots Grid (Applied only to top area visually) */}
+      <div className={styles.dotsBackground}></div>
+
+      {/* --- Values Section (Home Style) --- */}
       <div className={styles.valuesContainer}>
+        
+        {/* Connecting Line Visual */}
+        <div className={styles.connectionLine}></div>
+
         <div className={styles.valuesContent}>
-          <h3 className={styles.heading}>Our Core <span className={styles.accent}>Philosophy</span></h3>
+          <h3 className={styles.heading}>
+            Our Core <span className={styles.accent}>Philosophy</span>
+          </h3>
           <p className={styles.para}>
             At TheStackly, we believe that technology is only as powerful as the values that drive it. 
             Our culture is the operating system of our company—built on a kernel of trust, 
@@ -67,22 +84,33 @@ export default function ValuesTeam() {
         <div className={styles.valuesGrid}>
           {values.map((val, idx) => (
             <div key={idx} className={styles.valueCard}>
-              <div className={styles.iconBox}>
-                <i className={val.icon}></i>
+              <div className={styles.valueImageWrapper}>
+                <img 
+                  src={val.image} 
+                  alt={val.title} 
+                  className={styles.valueImage} 
+                />
               </div>
-              <h4>{val.title}</h4>
-              <p>{val.desc}</p>
+              <div className={styles.cardTextContent}>
+                <h4>{val.title}</h4>
+                <p>{val.desc}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      <hr className={styles.separator} />
+      <div className={styles.separatorContainer}>
+        <div className={styles.separatorLine}></div>
+        <div className={styles.separatorDot}></div>
+      </div>
 
-      {/* --- Team Section --- */}
+      {/* --- Team Section (Original Style) --- */}
       <div className={styles.teamContainer}>
         <div className={styles.teamHeader}>
-          <h3 className={styles.heading}>The <span className={styles.accent}>Tech Brains</span></h3>
+          <h3 className={styles.heading}>
+            The <span className={styles.accent}>Tech Brains</span>
+          </h3>
           <p className={styles.teamSub}>
             Meet the architects, engineers, and visionaries turning complex problems into elegant solutions.
           </p>
@@ -91,7 +119,7 @@ export default function ValuesTeam() {
         <div className={styles.teamGrid}>
           {team.map((dev, idx) => (
             <div key={idx} className={styles.devCard}>
-              <div className={styles.imgWrapper}>
+              <div className={styles.teamImageWrapper}>
                 <img src={dev.img} alt={dev.name} />
               </div>
               <div className={styles.devInfo}>
@@ -109,7 +137,7 @@ export default function ValuesTeam() {
 
         <div className={styles.teamAction}>
            <button onClick={handleNav} className={styles.secondaryBtn}>
-              View Full Team
+             View Full Team
            </button>
         </div>
       </div>

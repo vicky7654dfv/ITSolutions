@@ -1,39 +1,84 @@
 /* =========================================
-   1. Normal CSS (Desktop / Base)
+   1. Base & Backgrounds
    ========================================= */
-
 .vtWrap {
-  padding: 60px 40px;
-  background: #0f0f0f;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  position: relative;
   overflow: hidden;
+  width: 100%;
+}
+
+/* Connecting Dots Background Pattern */
+.dotsBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%; /* Only cover the Values section area roughly */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .heading {
-  color: white;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  line-height: 1.2;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 24px;
+  line-height: 1.1;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.5px;
 }
 
 .accent {
-  color: #f59e0b;
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .para {
   color: #d1d5db;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 20px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
   max-width: 600px;
+  position: relative;
+  z-index: 2;
+  font-weight: 400;
 }
 
-/* --- Values Section (Split Layout) --- */
+/* =========================================
+   2. Values Section (Home Component Style)
+   ========================================= */
 .valuesContainer {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  gap: 60px;
+  gap: 80px;
   align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Visual Connecting Line */
+.connectionLine {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #f59e0b;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.6;
 }
 
 .valuesContent {
@@ -44,43 +89,109 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
+  gap: 30px;
 }
 
+/* Glassmorphism Value Card */
 .valueCard {
   background: rgba(255, 255, 255, 0.03);
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  padding: 30px 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Unhovered Glow */
+.valueCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 60%);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Shine Effect */
+.valueCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+  transition: 0.5s;
+  pointer-events: none;
 }
 
 .valueCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5), 
+    0 0 20px rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.5);
   background: rgba(255, 255, 255, 0.05);
-  border-color: #f59e0b;
-  transform: translateY(-5px);
 }
 
-.iconBox {
-  width: 50px;
-  height: 50px;
-  background: rgba(245, 158, 11, 0.1);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
+.valueCard:hover::before {
+  left: 100%;
 }
 
-.iconBox i {
-  color: #f59e0b;
-  font-size: 1.2rem;
+/* BIGGER IMAGES FOR VALUES (Home Style) */
+.valueImageWrapper {
+  width: 180px; /* Fixed big size */
+  height: 180px; /* Fixed big size */
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  border-radius: 20px; /* Border Radius applied */
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.valueImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(40%);
+  opacity: 0.9;
+  transition: all 0.4s ease;
+}
+
+.valueCard:hover .valueImageWrapper {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.2);
+}
+
+.valueCard:hover .valueImage {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 .valueCard h4 {
-  color: white;
+  color: #fff;
   margin: 0 0 10px 0;
   font-size: 1.2rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.valueCard:hover h4 {
+  color: #f59e0b;
 }
 
 .valueCard p {
@@ -88,28 +199,37 @@
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
+  transition: color 0.3s;
+}
+
+.valueCard:hover p {
+  color: #e5e7eb;
 }
 
 /* --- Buttons --- */
 .primaryBtn {
-  margin-top: 10px;
-  padding: 14px 28px;
-  background: #f59e0b;
-  color: #000;
+  margin-top: 20px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  color: #1f2937;
   border: none;
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 14px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .primaryBtn:hover {
-  background: #d97706;
-  transform: translateX(5px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.6);
+  background: linear-gradient(135deg, #fbbf24 0%, #fcd34d 100%);
 }
 
 .secondaryBtn {
@@ -117,56 +237,83 @@
   background: transparent;
   color: #f59e0b;
   border: 2px solid #f59e0b;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .secondaryBtn:hover {
-  background: #f59e0b;
-  color: #000;
+  background: rgba(245, 158, 11, 0.1);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  transform: translateY(-2px);
 }
 
-.separator {
-  border: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+/* Divider */
+.separatorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 80px 0;
+  position: relative;
 }
 
-/* --- Team Section --- */
+.separatorLine {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
+}
+
+.separatorDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #f59e0b;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #f59e0b;
+}
+
+/* =========================================
+   3. Team Section (Restored Original Style)
+   ========================================= */
 .teamContainer {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .teamHeader {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .teamSub {
-  color: #9ca3af;
-  font-size: 1.1rem;
+  color: #d1d5db;
+  font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
+/* Restored Dark Card Style */
 .devCard {
-  background: #151515;
+  background: #151515; /* Restored BG */
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease;
+  /* No heavy glass backdrop filter */
 }
 
 .devCard:hover {
@@ -174,33 +321,34 @@
   border-color: rgba(245, 158, 11, 0.3);
 }
 
-.imgWrapper {
+/* Distinct Wrapper for Team Images (Rectangular) */
+.teamImageWrapper {
   width: 100%;
-  height: 320px; /* Slightly taller to accommodate portraits better */
+  height: 320px;
   overflow: hidden;
+  position: relative;
 }
 
-.imgWrapper img {
+.teamImageWrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* FIX: Ensures focus is on the top center (faces) */
-  object-position: top center; 
+  object-position: top center;
   transition: transform 0.5s ease;
 }
 
-.devCard:hover .imgWrapper img {
-  /* FIX: Very subtle zoom so faces don't get cut off */
-  transform: scale(1.02); 
+.devCard:hover .teamImageWrapper img {
+  transform: scale(1.02);
 }
 
 .devInfo {
   padding: 20px;
   text-align: center;
+  /* Removed heavy gradients from glass version */
 }
 
 .devInfo h4 {
-  color: white;
+  color: #fff;
   font-size: 1.2rem;
   margin: 0 0 5px 0;
 }
@@ -210,6 +358,7 @@
   font-size: 0.9rem;
   margin: 0 0 15px 0;
   font-weight: 500;
+  text-transform: none; /* Reset text transform */
 }
 
 .socials {
@@ -235,6 +384,7 @@
 .socials button:hover {
   background: #f59e0b;
   color: #000;
+  /* No box shadow/translate from glass version */
 }
 
 .teamAction {
@@ -242,17 +392,27 @@
 }
 
 /* =========================================
-   2. 1024px Media Query
+   4. Media Queries
    ========================================= */
+
+/* 1024px */
 @media (max-width: 1024px) {
   .vtWrap {
-    padding: 50px 30px;
+    padding: 60px 30px;
   }
 
   .valuesContainer {
     flex-direction: column;
     text-align: center;
-    gap: 40px;
+    gap: 50px;
+  }
+
+  .connectionLine {
+    display: none; 
+  }
+
+  .heading {
+    font-size: 2.5rem;
   }
 
   .para {
@@ -261,80 +421,61 @@
   }
 
   .teamGrid {
-    grid-template-columns: repeat(2, 1fr); /* Cards become wider here */
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 
-  /* FIX: Increase height to 450px so the wider cards don't crop the faces */
-  .imgWrapper {
-    height: 450px; 
+  .teamImageWrapper {
+    height: 450px;
   }
 }
 
-/* =========================================
-   3. 768px Media Query
-   ========================================= */
+/* 768px */
 @media (max-width: 768px) {
-  .heading {
-    font-size: 2rem;
-  }
-
   .valuesGrid {
-    grid-template-columns: 1fr; /* Stack values vertically on tablet */
+    grid-template-columns: 1fr;
   }
 
   .teamGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .imgWrapper {
-    height: 280px; /* Adjust height for tablet */
+  .teamImageWrapper {
+    height: 280px;
   }
 }
 
-/* =========================================
-   4. 425.6px Media Query
-   ========================================= */
+/* 425.6px */
 @media (max-width: 425.6px) {
   .vtWrap {
-    padding: 40px 20px;
+    padding: 40px 16px;
   }
 
   .heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
-  .primaryBtn {
+  .primaryBtn, .secondaryBtn {
     width: 100%;
     justify-content: center;
   }
 
   .teamGrid {
-    grid-template-columns: 1fr; /* Stack team vertically */
+    grid-template-columns: 1fr;
   }
 
-  .imgWrapper {
-    height: 350px; /* Tall photos on mobile for better portrait view */
-  }
-
-  .secondaryBtn {
-    width: 100%;
+  .teamImageWrapper {
+    height: 350px;
   }
 }
 
-/* =========================================
-   5. 375.2px Media Query
-   ========================================= */
+/* 375.2px */
 @media (max-width: 375.2px) {
-  .vtWrap {
-    padding: 30px 15px;
-  }
-
   .heading {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
-  .imgWrapper {
+  .teamImageWrapper {
     height: 300px;
   }
 }

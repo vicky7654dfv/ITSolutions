@@ -68,7 +68,7 @@ export default function Footer() {
           <ul>
             <li>
               <a
-                href="/About"
+                href="#/About"
                 onClick={(e) => handleQuickLinkClick(e, "/About")}
               >
                 About Us
@@ -76,7 +76,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/Services"
+                href="#/Services"
                 onClick={(e) => handleQuickLinkClick(e, "/Services")}
               >
                 Services
@@ -84,7 +84,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/Dashboard"
+                href="#/Dashboard"
                 onClick={(e) => handleQuickLinkClick(e, "/Dashboard")}
               >
                 Dashboard
@@ -92,7 +92,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/SignUp"
+                href="#/SignUp"
                 onClick={(e) => handleQuickLinkClick(e, "/SignUp")}
               >
                 SignUp
@@ -107,7 +107,7 @@ export default function Footer() {
           <ul>
             <li>
               <a
-                href="/"
+                href="#/"
                 onClick={(e) => {
                   e.preventDefault();
                   handleCategoryClick("Development");
@@ -119,7 +119,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/"
+                href="#/"
                 onClick={(e) => {
                   e.preventDefault();
                   handleCategoryClick("Mobile");
@@ -131,7 +131,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/"
+                href="#/"
                 onClick={(e) => {
                   e.preventDefault();
                   handleCategoryClick("Analytics");
@@ -143,7 +143,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="/"
+                href="#/"
                 onClick={(e) => {
                   e.preventDefault();
                   handleCategoryClick("IoT");
@@ -191,28 +191,28 @@ export default function Footer() {
           </p>
           <div className={Style.media}>
             <a
-              href="/Error"
+              href="#/Error"
               onClick={handleErrorLink}
               className={Style.socialLink}
             >
               <i className="fa-brands fa-x-twitter"></i>
             </a>
             <a
-              href="/Error"
+              href="#/Error"
               onClick={handleErrorLink}
               className={Style.socialLink}
             >
               <i className="fa-brands fa-facebook-f"></i>
             </a>
             <a
-              href="/Error"
+              href="#/Error"
               onClick={handleErrorLink}
               className={Style.socialLink}
             >
               <i className="fa-brands fa-linkedin-in"></i>
             </a>
             <a
-              href="/Error"
+              href="#/Error"
               onClick={handleErrorLink}
               className={Style.socialLink}
             >

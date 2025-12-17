@@ -1,11 +1,27 @@
 /* Container Styles */
 .aboutContainer {
   width: 100%;
-  padding: 80px 8%;
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  padding: 100px 8%;
+  background: radial-gradient(circle at top left, #1a1a1a 0%, #0f0f0f 100%);
   color: #fff;
   border-bottom: 1px solid #333;
-  overflow: hidden; /* Prevents scrollbars if animations go slightly out */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Tech Grid Background Pattern */
+.techGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .contentWrapper {
@@ -15,6 +31,8 @@
   gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Left Side: Text */
@@ -22,92 +40,229 @@
   flex: 1;
 }
 
-.textColumn h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+.badge {
+  display: inline-block;
+  background: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.textColumn h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .textColumn p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #d1d5db;
+  color: #9ca3af;
   margin-bottom: 1.5rem;
+}
+
+.techText {
+  color: #e5e7eb;
+  font-weight: 600;
+  border-bottom: 1px dashed #f59e0b;
+}
+
+/* Stats Row */
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statItem h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+}
+
+.statItem span {
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statLine {
+  height: 40px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Right Side: Images (Desktop Default) */
 .imageColumn {
   flex: 1;
   position: relative;
-  height: 400px; /* Fixed height only for desktop to allow absolute positioning */
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* --- THE CONNECTING WIRE --- */
+.connectionLine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Behind images */
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.wirePath {
+  stroke-dasharray: 10;
+  animation: dash 30s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.dataDot {
+  filter: drop-shadow(0 0 5px #f59e0b);
+}
+
+/* Image Boxes */
 .imgBox {
-  position: absolute; /* Default to absolute for the overlapping desktop look */
-  width: 250px;
-  height: 180px;
-  border-radius: 12px;
+  position: absolute;
+  width: 280px;
+  height: 200px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  /* Modern Glass/Tech Border */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+}
+
+.imgBox:hover {
+  transform: scale(1.05) !important; /* Override float scale slightly */
+  border-color: #f59e0b;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.3);
+  z-index: 10;
 }
 
 .imgBox img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.imgBox:hover img {
+  transform: scale(1.1);
+}
+
+/* High-Tech Corner Decoration */
+.cornerDecor {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 40px 40px;
+  border-color: transparent transparent rgba(245, 158, 11, 0.8) transparent;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+/* Subtle Scanline Animation overlay on images */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(255, 255, 255, 0.05) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Desktop Positioning */
-.imgBox:nth-child(1) {
-  top: 0;
-  left: 0;
+.imgBox:nth-child(2) { /* 1st Image Div */
+  top: 20px;
+  left: 20px;
   z-index: 1;
 }
 
-.imgBox:nth-child(2) {
-  bottom: 0;
-  right: 0;
+.imgBox:nth-child(3) { /* 2nd Image Div */
+  bottom: 20px;
+  right: 20px;
   z-index: 2;
-  border-color: #f59e0b;
+  border-bottom: 3px solid #f59e0b; /* Accent border */
 }
 
 /* Animations */
 @keyframes float {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
 }
 
 .floatFast {
-  animation: float 4s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
 .floatSlow {
-  animation: float 6s ease-in-out infinite;
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 1s;
 }
 
 /* --- Media Queries --- */
 
-/* 1024px: Just scaling down slightly, keeping layout */
+/* 1024px: Scale down */
 @media screen and (max-width: 1024px) {
   .aboutContainer {
-    padding: 60px 5%;
+    padding: 80px 5%;
   }
   .imgBox {
-    width: 200px;
-    height: 150px;
+    width: 240px;
+    height: 170px;
   }
   .imageColumn {
-    height: 350px;
+    height: 400px;
+  }
+  .textColumn h2 {
+    font-size: 2.5rem;
   }
 }
 
-/* 768px: Switch to Vertical Stack to fix overflow */
+/* 768px: Vertical Stack */
 @media screen and (max-width: 768px) {
   .contentWrapper {
     flex-direction: column;
@@ -115,65 +270,89 @@
   }
 
   .textColumn {
-    margin-bottom: 0.3rem; /* Add space between text and images */
+    margin-bottom: 2rem;
+  }
+  
+  .statsRow {
+    justify-content: center;
   }
 
-  /* RESET Layout for Images */
+  /* Adjust Wire for Mobile */
+  .connectionLine {
+    /* Modify wire to be a simple vertical connector on mobile */
+    width: 2px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom, #f59e0b, #3b82f6);
+  }
+  
+  /* Hide SVG wire on mobile, use simple CSS line above */
+  .connectionLine svg, .wirePath, .dataDot {
+    display: none;
+  }
+
   .imageColumn {
     width: 100%;
-    height: auto; /* Allow container to grow with content */
+    height: auto;
     display: flex;
-    flex-direction: column; /* Stack images vertically */
+    flex-direction: column;
     align-items: center;
-    gap: 2rem; /* Space between images */
+    gap: 3rem; /* Space for the connector */
     margin-top: 0;
   }
 
   .imgBox {
-    position: relative; /* Stop floating outside the box */
+    position: relative;
     top: auto;
     left: auto;
     bottom: auto;
     right: auto;
-    width: 80%; /* Make images responsive width */
-    max-width: 400px; /* But don't get too huge */
+    width: 80%;
+    max-width: 400px;
     height: 250px;
   }
   
-  /* Reset specific positioning adjustments */
-  .imgBox:nth-child(1),
-  .imgBox:nth-child(2) {
+  .imgBox:nth-child(2),
+  .imgBox:nth-child(3) {
     top: auto;
     left: auto;
     bottom: auto;
     right: auto;
-    transform: none; /* Reset transform so animation starts from 0 */
+    transform: none;
+    animation: none; /* Disable float on mobile to keep alignment */
   }
   
-  /* Re-apply animation but ensure it doesn't move too much */
-  
+  /* Re-enable slight hover animation on mobile */
+  .imgBox:hover {
+    transform: translateY(-5px) !important;
+  }
 }
 
 /* 425.6px */
 @media screen and (max-width: 425.6px) {
   .textColumn h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   .imgBox {
-    width: 90%;
-    height: 200px; /* Slightly smaller height */
+    width: 100%;
+    height: 220px;
   }
 }
 
 /* 375.2px */
 @media screen and (max-width: 375.2px) {
+  .aboutContainer {
+    padding: 60px 20px;
+  }
+
   .textColumn h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   
   .imgBox {
-    width: 100%;
-    height: 180px;
+    height: 200px;
   }
 }

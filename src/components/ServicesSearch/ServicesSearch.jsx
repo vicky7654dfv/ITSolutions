@@ -3,6 +3,20 @@ import { useNavigate } from "react-router-dom";
 import styles from "./ServicesSearch.module.css";
 import { useCategory } from "../CategoryContext/CategoryContext";
 
+// Importing Assets (REPLACE THESE WITH YOUR ACTUAL IMAGE PATHS)
+import cloudImg from "../../assets/HomePage1/ServicesSearch/1.webp";
+import aiImg from "../../assets/HomePage1/ServicesSearch/2.webp";
+import securityImg from "../../assets/HomePage1/ServicesSearch/3.webp";
+import webImg from "../../assets/HomePage1/ServicesSearch/4.webp";
+import mobileImg from "../../assets/HomePage1/ServicesSearch/5.webp";
+import dataImg from "../../assets/HomePage1/ServicesSearch/6.webp";
+import iotImg from "../../assets/HomePage1/ServicesSearch/7.webp";
+import blockchainImg from "../../assets/HomePage1/ServicesSearch/8.webp";
+import devopsImg from "../../assets/HomePage1/ServicesSearch/9.webp";
+import designImg from "../../assets/HomePage1/ServicesSearch/10.webp";
+import consultingImg from "../../assets/HomePage1/ServicesSearch/11.webp";
+import transformImg from "../../assets/HomePage1/ServicesSearch/12.webp";
+
 const ServicesSearch = () => {
   const navigate = useNavigate();
   const { activeCategory, setActiveCategory } = useCategory();
@@ -16,96 +30,84 @@ const ServicesSearch = () => {
       title: "Cloud Infrastructure",
       description: "Scalable cloud solutions with AWS, Azure, and Google Cloud for seamless business operations",
       type: "Cloud",
-      icon: "☁️",
-      color: "#3B82F6",
+      image: cloudImg,
     },
     {
       id: 2,
       title: "AI & Machine Learning",
       description: "Intelligent automation and predictive analytics powered by advanced AI algorithms",
       type: "AI",
-      icon: "🤖",
-      color: "#10B981",
+      image: aiImg,
     },
     {
       id: 3,
       title: "Cybersecurity Solutions",
       description: "Comprehensive security services to protect your digital assets and data",
       type: "Security",
-      icon: "🛡️",
-      color: "#84CC16",
+      image: securityImg,
     },
     {
       id: 4,
       title: "Web Development",
       description: "Modern, responsive web applications built with latest technologies and frameworks",
       type: "Development",
-      icon: "💻",
-      color: "#06B6D4",
+      image: webImg,
     },
     {
       id: 5,
       title: "Mobile Applications",
       description: "Native and cross-platform mobile apps for iOS and Android platforms",
       type: "Mobile",
-      icon: "📱",
-      color: "#EF4444",
+      image: mobileImg,
     },
     {
       id: 6,
       title: "Data Analytics",
       description: "Transform raw data into actionable insights with advanced analytics tools",
       type: "Analytics",
-      icon: "📊",
-      color: "#8B5CF6",
+      image: dataImg,
     },
     {
       id: 7,
       title: "IoT Solutions",
       description: "Connect and manage devices with our Internet of Things platform and services",
       type: "IoT",
-      icon: "🌐",
-      color: "#EC4899",
+      image: iotImg,
     },
     {
       id: 8,
       title: "Blockchain Development",
       description: "Secure and transparent blockchain solutions for various business applications",
       type: "Blockchain",
-      icon: "⛓️",
-      color: "#F59E0B",
+      image: blockchainImg,
     },
     {
       id: 9,
       title: "DevOps Services",
       description: "Streamline development and operations with continuous integration and deployment",
       type: "DevOps",
-      icon: "⚙️",
-      color: "#6366F1",
+      image: devopsImg,
     },
     {
       id: 10,
       title: "UI/UX Design",
       description: "User-centered design solutions that enhance user experience and engagement",
       type: "Design",
-      icon: "🎨",
-      color: "#DC2626",
+      image: designImg,
     },
     {
       id: 11,
       title: "IT Consulting",
       description: "Strategic technology consulting to optimize your IT infrastructure and processes",
       type: "Consulting",
-      icon: "💼",
-      color: "#7C3AED",
+      image: consultingImg,
     },
     {
       id: 12,
       title: "Digital Transformation",
       description: "Comprehensive digital transformation services to modernize your business",
       type: "Transformation",
-      icon: "🚀",
-      color: "#059669",
+      image: transformImg,
     },
   ];
 
@@ -183,23 +185,6 @@ const ServicesSearch = () => {
     setSortOrder("default");
   };
 
-  const getLighterColor = (color) => {
-    // Convert hex to RGB and lighten it
-    const hex = color.replace("#", "");
-    const r = parseInt(hex.substr(0, 2), 16);
-    const g = parseInt(hex.substr(2, 2), 16);
-    const b = parseInt(hex.substr(4, 2), 16);
-
-    // Lighten by 90%
-    const lightR = Math.min(255, r + (255 - r) * 0.9);
-    const lightG = Math.min(255, g + (255 - g) * 0.9);
-    const lightB = Math.min(255, b + (255 - b) * 0.9);
-
-    return `rgb(${Math.round(lightR)}, ${Math.round(lightG)}, ${Math.round(
-      lightB
-    )})`;
-  };
-
   return (
     <div data-aos="fade" className={styles.container}>
       <div className={styles.header}>
@@ -216,7 +201,7 @@ const ServicesSearch = () => {
             <input
               id="inputSearch"
               type="text"
-              placeholder="Search services by name or description..."
+              placeholder="Search services..."
               value={searchTerm}
               onChange={(e) => handleSearchChange(e.target.value)}
               className={styles.searchInput}
@@ -235,7 +220,7 @@ const ServicesSearch = () => {
         <div className={styles.filterContainer}>
           <div className={styles.filterGroup}>
             <label htmlFor="nameSelect" className={styles.filterLabel}>
-              Filter by Type:
+              Type:
             </label>
             <select
               id="nameSelect"
@@ -253,7 +238,7 @@ const ServicesSearch = () => {
 
           <div className={styles.filterGroup}>
             <label htmlFor="nameSelectSort" className={styles.filterLabel}>
-              Sort by:
+              Sort:
             </label>
             <select
               id="nameSelectSort"
@@ -277,7 +262,7 @@ const ServicesSearch = () => {
         </p>
         {(searchTerm || selectedType !== "All") && (
           <button className={styles.clearFilters} onClick={clearAllFilters}>
-            Clear All Filters
+            Clear All
           </button>
         )}
       </div>
@@ -288,27 +273,21 @@ const ServicesSearch = () => {
             key={service.id}
             className={styles.serviceCard}
             data-category={service.type}
-            style={{
-              borderLeftColor: service.color,
-              backgroundColor: getLighterColor(service.color),
-            }}
           >
-            <div className={styles.cardHeader}>
-              <div
-                className={styles.iconContainer}
-                style={{ backgroundColor: service.color }}
-              >
-                <span className={styles.serviceIcon}>{service.icon}</span>
-              </div>
-              <div
-                className={styles.typeBadge}
-                style={{ backgroundColor: service.color }}
-              >
-                {service.type}
-              </div>
+            {/* Added Shine Effect Element in CSS */}
+            
+            <div className={styles.imageWrapper}>
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                className={styles.serviceImage} 
+              />
             </div>
 
             <div className={styles.cardContent}>
+              <div className={styles.typeBadge}>
+                {service.type}
+              </div>
               <h3 className={styles.serviceTitle}>{service.title}</h3>
               <p className={styles.serviceDescription}>{service.description}</p>
             </div>
@@ -316,20 +295,11 @@ const ServicesSearch = () => {
             <div className={styles.cardFooter}>
               <button
                 className={styles.detailsButton}
-                style={{
-                  backgroundColor: service.color,
-                  borderColor: service.color,
-                }}
                 onClick={handleDetailsClick}
               >
                 View Details
               </button>
             </div>
-
-            <div
-              className={styles.cardGlow}
-              style={{ backgroundColor: service.color }}
-            ></div>
           </div>
         ))}
       </div>

@@ -36,7 +36,11 @@ const ServiceList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    AOS.init({ duration: 800 });
+    AOS.init({ 
+      duration: 800,
+      once: true,
+      offset: 100 
+    });
   }, []);
 
   return (
@@ -48,7 +52,14 @@ const ServiceList = () => {
 
       <div className={styles.gridContainer}>
         {services.map((service) => (
-          <div key={service.id} className={styles.card}>
+          <div key={service.id} className={styles.card} data-aos="zoom-in">
+            {/* Animated Particles Background */}
+            <div className={styles.particles}>
+              <div className={styles.particle}></div>
+              <div className={styles.particle}></div>
+              <div className={styles.particle}></div>
+            </div>
+
             {/* Counter Section */}
             <div className={styles.counterWrapper}>
               <span className={styles.plus}>+</span>
@@ -65,7 +76,11 @@ const ServiceList = () => {
             <h1>{service.title}</h1>
             <p className={styles.desc}>{service.desc}</p>
             
-            <button className={styles.actionBtn} onClick={() => navigate('/Error')}>
+            <button 
+              className={styles.actionBtn} 
+              onClick={() => navigate('/Error')}
+              aria-label={`View details about ${service.title}`}
+            >
               View Details
             </button>
           </div>

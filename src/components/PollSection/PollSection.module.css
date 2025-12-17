@@ -6,13 +6,9 @@
   color: #fff;
   border-bottom: 3px solid #f59e0b;
   position: relative;
-  /* Sticky/Top/Z-index were requested in your prompt, though usually used for headers. 
-     I've included them to match your request exactly, but be careful if this isn't the top element. */
-  position: sticky; 
-  /* top: 0;  <-- CAUTION: This will make the poll section stick to the top of the screen when scrolling. 
-     If you only wanted the style (colors) and not the behavior, remove 'position: sticky' and 'top: 0'. */
-  z-index: 1000; 
-  box-shadow: 0 2px 20px rgba(59, 130, 246, 0.3);
+  z-index: 10;
+  box-shadow: 0 2px 20px rgba(59, 130, 246, 0.1);
+  perspective: 1000px; /* Adds depth for 3D elements */
 }
 
 .header {
@@ -24,6 +20,7 @@
   font-size: 2.5rem;
   color: #fff;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3); /* Subtle text glow */
 }
 
 .header p {
@@ -38,25 +35,58 @@
   gap: 3rem;
 }
 
-/* Card */
+/* --- MODERN CARD REDESIGN --- */
 .pollCard {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  /* Glassmorphism Blur */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Unhovered Colored State */
+  border: 1px solid rgba(59, 130, 246, 0.3); /* Visible Blue Tint Border */
+  border-radius: 16px;
   padding: 2rem;
   position: relative;
+  overflow: hidden;
+  
+  /* Unhovered Glow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(59, 130, 246, 0.05);
+  
+  /* LIVE ANIMATION */
+  animation: floatPoll 6s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Stagger Animations */
+.pollCard:nth-child(even) {
+  animation-delay: 1.5s;
+}
+
+/* Hover Effects */
+.pollCard:hover {
+  transform: translateY(-8px) scale(1.01);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #3b82f6; /* Bright Blue Border */
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(59, 130, 246, 0.2); /* Outer Blue Glow */
 }
 
 .pollCard h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   color: #f3f4f6;
+  font-weight: 700;
 }
 
 .voteCount {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #9ca3af;
   margin-bottom: 1.5rem;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
 }
 
 /* Progress Bars */
@@ -69,7 +99,7 @@
   justify-content: space-between;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
-  color: #d1d5db;
+  color: #e5e7eb;
 }
 
 .percentage {
@@ -87,9 +117,29 @@
 
 .progressBarFill {
   height: 100%;
-  background: #3b82f6; /* Blue fill */
+  background: linear-gradient(90deg, #3b82f6, #60a5fa); /* Gradient Blue */
   border-radius: 4px;
   transition: width 1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer animation inside progress bar */
+.progressBarFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
 }
 
 /* Status Badge */
@@ -97,13 +147,26 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(16, 185, 129, 0.2); /* Green tint */
+  background: rgba(16, 185, 129, 0.2);
   color: #34d399;
-  padding: 4px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+}
+
+/* Animations */
+@keyframes floatPoll {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
 }
 
 /* --- Media Queries --- */
@@ -126,6 +189,12 @@
   
   .header h2 {
     font-size: 2rem;
+  }
+  
+  /* Reduce float movement on mobile */
+  @keyframes floatPoll {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
   }
 }
 
@@ -155,8 +224,9 @@
   }
   
   .statusTag {
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
     font-size: 0.65rem;
+    padding: 4px 10px;
   }
 }

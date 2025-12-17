@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
-import img from "../../assets/Home/img.webp"
+
+// Importing Assets
+import img from "../../assets/Home/img.webp";
+// REPLACE THESE WITH YOUR ACTUAL IMAGE PATHS
+import innovationImg from "../../assets/HomePage1/Home/1.webp"; 
+import securityImg from "../../assets/HomePage1/Home/2.webp"; 
+import deploymentImg from "../../assets/HomePage1/Home/3.webp"; 
+import supportImg from "../../assets/HomePage1/Home/4.webp"; 
 
 const Home = () => {
   return (
@@ -71,7 +78,9 @@ const Home = () => {
           
           <div className={styles.featuresGrid}>
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🚀</div>
+              <div className={styles.imageWrapper}>
+                <img src={innovationImg} alt="Innovation" className={styles.featureImage} />
+              </div>
               <h3 className={styles.featureTitle}>Innovation Driven</h3>
               <p className={styles.featureDescription}>
                 Stay ahead with cutting-edge technologies and innovative approaches to problem-solving.
@@ -79,7 +88,9 @@ const Home = () => {
             </div>
             
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🛡️</div>
+              <div className={styles.imageWrapper}>
+                <img src={securityImg} alt="Security" className={styles.featureImage} />
+              </div>
               <h3 className={styles.featureTitle}>Enterprise Security</h3>
               <p className={styles.featureDescription}>
                 Robust security measures to protect your data and ensure compliance with industry standards.
@@ -87,7 +98,9 @@ const Home = () => {
             </div>
             
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>⚡</div>
+              <div className={styles.imageWrapper}>
+                <img src={deploymentImg} alt="Deployment" className={styles.featureImage} />
+              </div>
               <h3 className={styles.featureTitle}>Fast Deployment</h3>
               <p className={styles.featureDescription}>
                 Rapid implementation and deployment without compromising on quality or performance.
@@ -95,7 +108,9 @@ const Home = () => {
             </div>
             
             <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🔧</div>
+              <div className={styles.imageWrapper}>
+                <img src={supportImg} alt="Support" className={styles.featureImage} />
+              </div>
               <h3 className={styles.featureTitle}>24/7 Support</h3>
               <p className={styles.featureDescription}>
                 Round-the-clock technical support and maintenance services for uninterrupted operations.
